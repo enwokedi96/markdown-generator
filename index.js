@@ -76,7 +76,7 @@ const userSectionChoice = async() => {
     // Second phase of inquiry
     userAnswers = await inquirer.prompt(questions)
 
-    // third
+    // Third and final phase:  write to file
     await writeToFile('meowy', [markdownSections,userAnswers])
 
     // return answers
@@ -96,6 +96,9 @@ const populateQuestions = (...array) =>{
                 choices: ["MIT", "Apache", "GNU", "ISC"]
             })
         }
+        else if (sections==="Table of Content"){
+            continue;
+        }
         else {
                 questions.push({
                     type: "input",
@@ -111,12 +114,26 @@ const populateQuestions = (...array) =>{
 // function to write README file
 const writeToFile = async (fileName, [sectionNames, data]) => {
     let compiledREADME = "";
-    console.log(sectionNames, data, sectionNames.length)
     for (let i=0; i<sectionNames.length; i++){
-        compiledREADME += `**${sectionNames[i]}**
-                        ${data[sectionNames[i]]}
-                        
-                        `
+        // specifically for project name, align with heading
+        if (i===0){
+            compiledREADME += `\n**${sectionNames[i]}**: ${data[sectionNames[i]]}\n`
+        }
+        // specifically for license, align with project name
+        else if (sectionNames[i]==="License"){
+            compiledREADME += `\t\t ${getLicenseBadge(data[sectionNames[i]])}\n`
+        }
+        // specifically for content: create unordered list of content
+        else if (sectionNames[i]==="Table of Content"){
+            compiledREADME += `\n**${sectionNames[i]}**\n`
+            sectionNames.forEach(element => {
+                compiledREADME += `\n- ${element}\n\n`
+            }); 
+        }
+        // All other sections: populate with a vengance!!!!
+        else {
+            compiledREADME += `\n**${sectionNames[i]}** \n\n${data[sectionNames[i]]}\n`
+        }
     }
     console.log("all text: ", compiledREADME)
 
@@ -124,8 +141,7 @@ const writeToFile = async (fileName, [sectionNames, data]) => {
     fs.writeFile(fileName+'.md', compiledREADME, (err) =>
             err ? console.error(err) : console.log('Successfully Written!')
             );
-
-    console.log('All Done! Powered by Your Dav Uncle Israel!');
+    await console.log('All Done! Powered by Your Fav Uncle (Ruckus) Israel!');
 }
 
 // function to initialize program
