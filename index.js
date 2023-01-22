@@ -118,7 +118,14 @@ const writeToFile = async (fileName, [sectionNames, data]) => {
                         
                         `
     }
-    console.log("all done: ", compiledREADME)
+    console.log("all text: ", compiledREADME)
+
+    // now write text to file
+    fs.writeFile(fileName+'.md', compiledREADME, (err) =>
+            err ? console.error(err) : console.log('Successfully Written!')
+            );
+
+    console.log('All Done! Powered by Your Dav Uncle Israel!');
 }
 
 // function to initialize program
