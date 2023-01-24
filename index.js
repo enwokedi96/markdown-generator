@@ -24,7 +24,7 @@ const userSectionChoice = async() => {
             type: 'checkbox',
             message: 'What optional sections would you like to add?',
             name: 'optionals',
-            choices:["TOC","recommendedModules", "FAQs", "License"]
+            choices:["TOC","Contributing", "Test", "FAQs", "License"]
         },
     ]).then((response)=>{
         //console.log(response)
