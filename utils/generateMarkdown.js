@@ -5,24 +5,30 @@ function generateMarkdown(sectionNames,data) {
         // specifically for project name, align with heading
         if (i===0){
             console.log(`PROJECT NAME: ${data[sectionNames[i]]}`)
-            compiledREADME += `\n**${data[sectionNames[i]]}**\n\n ${getLicenseBadge(data["License"])}\n`
+            compiledREADME += `\n## **${data[sectionNames[i]]}**\n \n ${getLicenseBadge(data["License"])}\n`
         }
         // specifically for license, align with project name
         else if (sectionNames[i]==="License"){
-            compiledREADME += `\n**${sectionNames[i]}** \n\nThis project is licensed under the terms of the ${data[sectionNames[i]]} license.\n\n`
+            compiledREADME += `\n### ${sectionNames[i]} \n\nThis project is licensed under the terms of the ${data[sectionNames[i]]} license.\n\n`
         }
         // specifically for content: create unordered list of content
         else if (sectionNames[i]==="Table of Content"){
-            compiledREADME += `\n**${sectionNames[i]}**\n`
+            compiledREADME += `\n### ${sectionNames[i]}\n`;
             sectionNames.forEach(element => {
                 compiledREADME += `\n- ${element}\n\n`
             }); 
         }
+        // specifically for questions/FAQ
+        else if (sectionNames[i]==="Troubleshooting & FAQs"){
+            compiledREADME += `\n### ${sectionNames[i]} \n\n${data[sectionNames[i]]}\n`;
+            compiledREADME += `\n If in doubt, contact us via email on ${data["email"]}. Also don't forget to checkout our Github account ([${data["git"]}](https://github.com/${data["git"]})) for more exciting projects\n`
+        }
         // All other sections: populate with a vengance!!!!
         else {
-            compiledREADME += `\n**${sectionNames[i]}** \n\n${data[sectionNames[i]]}\n`
+            compiledREADME += `\n### ${sectionNames[i]} \n\n${data[sectionNames[i]]}\n`
         }
     }
+
     console.log("all text: ", compiledREADME)
 
     return compiledREADME;
