@@ -14,14 +14,16 @@ function generateMarkdown(sectionNames,data) {
         // specifically for content: create unordered list of content
         else if (sectionNames[i]==="Table of Content"){
             compiledREADME += `\n### ${sectionNames[i]}\n`;
-            sectionNames.forEach(element => {
-                compiledREADME += `\n- ${element}\n\n`
+            sectionNames.slice(1).forEach(element => {
+                compiledREADME += `\n- [${element}](#${element.replace(/\s+/g, '-')})\n\n`
             }); 
         }
         // specifically for questions/FAQ
         else if (sectionNames[i]==="Troubleshooting & FAQs"){
             compiledREADME += `\n### ${sectionNames[i]} \n\n${data[sectionNames[i]]}\n`;
-            compiledREADME += `\n If in doubt, contact us via email on ${data["email"]}. Also don't forget to checkout our Github account ([${data["git"]}](https://github.com/${data["git"]})) for more exciting projects\n`
+            console.log(data["email"])
+            if (data["email"]!==""||data["email"]!=undefined){compiledREADME += `\n If in doubt, contact us via email on ${data["email"]}.\n`}
+            if (data["git"]!==""||data["git"]!=undefined){compiledREADME += `\n Don't forget to also checkout our Github account ([${data["git"]}](https://github.com/${data["git"]})) for more exciting projects.\n`}
         }
         // All other sections: populate with a vengance!!!!
         else {
