@@ -126,7 +126,7 @@ const writeToFile = async (fileName, [sectionNames, data]) => {
 // function to initialize program
 async function init() {
     await userSectionChoice();
-    await writeToFile('meowy', [markdownSections,userAnswers])
+    await writeToFile('README', [markdownSections,userAnswers])
 }
 
 // function call to initialize program
