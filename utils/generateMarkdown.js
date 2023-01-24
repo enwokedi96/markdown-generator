@@ -4,7 +4,8 @@ function generateMarkdown(sectionNames,data) {
     for (let i=0; i<sectionNames.length; i++){
         // specifically for project name, align with heading
         if (i===0){
-            compiledREADME += `\n**${data[sectionNames[i]]}** \n\n${getLicenseBadge(data["License"])}\n`
+            console.log(`PROJECT NAME: ${data[sectionNames[i]]}`)
+            compiledREADME += `\n**${data[sectionNames[i]]}**\n\n ${getLicenseBadge(data["License"])}\n`
         }
         // specifically for license, align with project name
         else if (sectionNames[i]==="License"){

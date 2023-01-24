@@ -1,14 +1,9 @@
 
-**** 
+****
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**License** 
-
-This project is licensed under the terms of the MIT license.
-
-
-**Introduction** 
+**Description** 
 
 
 
@@ -17,36 +12,41 @@ This project is licensed under the terms of the MIT license.
 - Project Name
 
 
-- License
-
-
-- Introduction
+- Description
 
 
 - Table of Content
 
 
-- Requirements
-
-
 - Installation
 
 
-- Configuration
+- Requirements
+
+
+- License
+
+
+- Contributing
 
 
 - Troubleshooting & FAQs
-
-
-**Requirements** 
-
 
 
 **Installation** 
 
 
 
-**Configuration** 
+**Requirements** 
+
+
+
+**License** 
+
+This project is licensed under the terms of the MIT license.
+
+
+**Contributing** 
 
 
 

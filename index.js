@@ -27,8 +27,7 @@ const userSectionChoice = async() => {
             choices:["TOC","Contributing", "Test", "FAQs", "License"]
         },
     ]).then((response)=>{
-        //console.log(response)
-        // Compile list of all compulsory and user-picked optional headings in order 
+        // Compile list of all compulsory and user-picked optional headings in correct order 
         // 1
         markdownSections.push("Project Name")
         // 2
@@ -68,11 +67,6 @@ const userSectionChoice = async() => {
     // Second phase of inquiry
     userAnswers = await inquirer.prompt(questions)
 
-    // Third and final phase:  write to file
-    await writeToFile('meowy', [markdownSections,userAnswers])
-
-    // return answers
-    //console.log(userAnswers)
 }
 
 
@@ -99,6 +93,19 @@ const populateQuestions = (...array) =>{
                 })
             }
     }
+    // afterthought if questions/FAQ section exists
+    if (array[0].includes("Troubleshooting & FAQs")){
+        console.log("-------------------------------------------------------")
+        questions.push({
+            type: "input",
+            message: `What is your Git name?`,
+            name: "git"
+            },
+            {
+            type: "input",
+            message: `What is your contact email?`,
+            name: "email"})
+    }
     return questions;
 }
 
@@ -117,9 +124,11 @@ const writeToFile = async (fileName, [sectionNames, data]) => {
 }
 
 // function to initialize program
-function init() {
-    userSectionChoice();
+async function init() {
+    await userSectionChoice();
+    await writeToFile('meowy', [markdownSections,userAnswers])
 }
 
 // function call to initialize program
 init();
+
