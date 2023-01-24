@@ -19,7 +19,7 @@ function generateMarkdown(sectionNames,data) {
             }); 
         }
         // specifically for questions/FAQ
-        else if (sectionNames[i]==="Troubleshooting & FAQs"){
+        else if (sectionNames[i]==="Troubleshooting and FAQs"){
             compiledREADME += `\n### **${sectionNames[i]}** \n\n${data[sectionNames[i]]}\n`;
             console.log(data["email"])
             if (data["email"]!==""||data["email"]!=undefined){compiledREADME += `\n If in doubt, contact us via email on ${data["email"]}.\n`}

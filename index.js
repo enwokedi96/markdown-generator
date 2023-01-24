@@ -49,12 +49,12 @@ const userSectionChoice = async() => {
             markdownSections.push("Contributing")
         }
         // 8
-        if (response.optionals.includes("Tests")){
+        if (response.optionals.includes("Test")){
             markdownSections.push("Tests")
         }
         // 9
         if (response.optionals.includes("FAQs")){
-            markdownSections.push("Troubleshooting & FAQs")
+            markdownSections.push("Troubleshooting and FAQs")
         }
         //console.log("User sections compiled: ", markdownSections);
         return markdownSections;
@@ -94,7 +94,7 @@ const populateQuestions = (...array) =>{
             }
     }
     // afterthought if questions/FAQ section exists
-    if (array[0].includes("Troubleshooting & FAQs")){
+    if (array[0].includes("Troubleshooting and FAQs")){
         console.log("-------------------------------------------------------")
         questions.push({
             type: "input",
