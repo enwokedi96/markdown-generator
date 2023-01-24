@@ -4,11 +4,11 @@ function generateMarkdown(sectionNames,data) {
     for (let i=0; i<sectionNames.length; i++){
         // specifically for project name, align with heading
         if (i===0){
-            compiledREADME += `\n**${sectionNames[i]}**: ${data[sectionNames[i]]}\n`
+            compiledREADME += `\n**${data[sectionNames[i]]}** \n\n${getLicenseBadge(data["License"])}\n`
         }
         // specifically for license, align with project name
         else if (sectionNames[i]==="License"){
-            compiledREADME += `\t\t ${getLicenseBadge(data[sectionNames[i]])}\n`
+            compiledREADME += `\n**${sectionNames[i]}** \n\nThis project is licensed under the terms of the ${data[sectionNames[i]]} license.\n\n`
         }
         // specifically for content: create unordered list of content
         else if (sectionNames[i]==="Table of Content"){

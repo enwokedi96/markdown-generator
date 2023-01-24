@@ -32,25 +32,27 @@ const userSectionChoice = async() => {
         // 1
         markdownSections.push("Project Name")
         // 2
-        if (response.optionals.includes("License")){
-            markdownSections.push("License")
-        }
+        markdownSections.push("Description")
         // 3
-        markdownSections.push("Introduction")
-        // 4
         if (response.optionals.includes("TOC")){
             markdownSections.push("Table of Content")
         }
+        // 4
+        markdownSections.push("Installation")
         // 5
         markdownSections.push("Requirements")
         // 6
-        if (response.optionals.includes("recommendedModules")){
-            markdownSections.push("Recommended Modules")
+        if (response.optionals.includes("License")){
+            markdownSections.push("License")
         }
         // 7
-        markdownSections.push("Installation")
+        if (response.optionals.includes("Contributing")){
+            markdownSections.push("Contributing")
+        }
         // 8
-        markdownSections.push("Configuration")
+        if (response.optionals.includes("Tests")){
+            markdownSections.push("Tests")
+        }
         // 9
         if (response.optionals.includes("FAQs")){
             markdownSections.push("Troubleshooting & FAQs")
